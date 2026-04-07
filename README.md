@@ -1,73 +1,63 @@
-# React + TypeScript + Vite
+<div align="center">
+  <img src="public/logo.png" alt="Gaslight Logo" width="150"/>
+  <h1>Gaslight</h1>
+  <p><strong>The Ultimate Stealth Workspace & Privacy Tool for Windows</strong></p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+  <a href="#features">Features</a> • 
+  <a href="#installation">Installation</a> • 
+  <a href="#usage-guide">Usage Guide</a> • 
+  <a href="#why-gaslight">Why Gaslight?</a>
+</div>
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🌟 About Gaslight
+**Gaslight** is a hyper-optimized, native Windows application designed to give you absolute command over your digital visibility. Whether you need to instantly clean your screen for a presentation, hide sensitive information from prying eyes, or eliminate visual clutter to enter a deep flow state, Gaslight operates silently beneath the surface using native Windows APIs to securely stash your windows.
 
-## React Compiler
+Unlike clunky alternatives, Gaslight provides a gorgeous, frosted-glass "Smart Switcher" overlay, allowing you to seamlessly manage, view, and restore your hidden applications without breaking your workflow.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Core Features
+- **🚀 Instant Vanish (Alt+H):** Press a single key to completely wipe an active application from your screen and taskbar. It remains safely running in memory, entirely invisible to the OS.
+- **👻 Ghost Mode (Alt+G):** Turn any active window semi-transparent! Perfect for keeping an eye on a video, chat, or background process without it dominating your screen. (Includes an optional "Click-Through" mode to make the window completely intangible).
+- **🚨 Panic Button & Decoys (Ctrl+Alt+C):** Someone approaching your desk? Hit the panic button to instantly conceal all visible windows and automatically launch pre-configured "Decoy" files (like Excel sheets, Word docs, or specific applications) to immediately fill your screen with productive-looking work.
+- **📱 Smart Switcher Overlay (Hold Alt):** Summon a beautiful, native-feeling Windows overlay (with Mica blur) that displays live, high-fidelity thumbnail snapshots of all your currently hidden windows. Simply click a thumbnail to flawlessly restore it.
+- **🛡️ Intelligent Whitelist:** Configure critical applications (like your main IDE or presentation software) to *never* be hidden, ensuring your primary tools remain active even during a panic-clear.
 
-## Expanding the ESLint configuration
+## 📥 Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Because Gaslight is built on the modern Windows App SDK as an optimized, framework-dependent binary, installation is incredibly lightweight and seamless.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1. **Download** the latest `Gaslight_Setup.exe` from the [Releases page](#) (or click Download on the hosted website).
+2. **Run the installer**. It will automatically extract the necessary files and drop a shortcut onto your Desktop and Start Menu.
+3. Launch Gaslight! It will silently sit in your System Tray (the arrow icon near your clock) ready to guard your workflow.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+*(Note: Gaslight requires the standard .NET 9 Desktop Runtime, which Windows 11 handles natively).*
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 📖 Usage Guide
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Gaslight operates entirely via global system hotkeys. Once the app is running in your system tray, you can use the following commands from *anywhere* in Windows:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+| Shortcut | Action | Description |
+| :--- | :--- | :--- |
+| `Alt + H` | **Hide Active** | Instantly hides the window currently in focus. |
+| `Alt + G` | **Toggle Ghost Mode** | Makes the active window semi-transparent (configurable in settings). |
+| `Alt + X` | **Restore Last** | Brings back the most recently hidden window. |
+| `Ctrl + Alt + C` | **Panic Clear** | Hides *all* visible windows and automatically launches your Decoys. |
+| **Hold `Alt`** | **Smart Switcher** | Opens the visual overlay. Click any window thumbnail to restore it. |
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+*You can customize the `Alt` long-press delay, Ghost Mode opacity, and configure your Whitelists and Decoys by Right-Clicking the Gaslight icon in your System Tray and clicking "Settings".*
+
+## 🎯 Why Gaslight? (SEO & Discoverability)
+If you've been searching for a "boss key", "screen hider", "privacy overlay", or a way to "make windows transparent" on Windows 10/11, Gaslight is the modern solution. 
+- **Performance:** Written in C# with direct P/Invoke calls to `user32.dll` for zero-latency execution.
+- **Aesthetics:** Implements Windows 11 `MicaBackdrop` and modern fluid UI concepts—it looks and feels like it belongs in the OS.
+- **Privacy:** 100% local. No telemetry, no tracking, and fully free for personal use.
+
+## 🤝 Support the Developer
+Gaslight is provided completely free of charge. If it saved your privacy, helped you focus, or you just love the UI, consider leaving a tip!
+- [Buy me a Coffee](https://ko-fi.com/)
+
+---
+<div align="center">
+  <i>Built natively for Windows 10 & Windows 11.</i>
+</div>
