@@ -1,11 +1,11 @@
 // @ts-nocheck
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { EyeOff, Command, Layers, ShieldAlert, Download, CheckCircle2, Coffee, MonitorPlay, Sparkles, Settings, Palette, BookOpen, ChevronUp, ChevronDown, Trash2, Briefcase, Lock, Focus } from 'lucide-react';
+import { EyeOff, Command, Layers, ShieldAlert, Download, CheckCircle2, Coffee, MonitorPlay, Sparkles, Settings, Palette, BookOpen, ChevronUp, ChevronDown, Trash2, Briefcase, Lock, Focus, Ghost } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
-const fadeIn = {
+const fadeIn: any = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" as const } }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" as const } } 
 };
 
 const staggerContainer = {
@@ -18,25 +18,6 @@ const staggerContainer = {
   }
 };
 
-const FeatureCard = ({ icon: Icon, title, description }: { icon: any, title: string, description: string }) => (
-  <motion.div 
-    variants={fadeIn}
-    whileHover={{ y: -5, scale: 1.02 }}
-    className="p-6 rounded-2xl bg-white/[0.02] backdrop-blur-xl border border-white/10 hover:border-gaslight-cyan/50 transition-all group relative overflow-hidden"
-  >
-    <div className="absolute inset-0 bg-gradient-to-br from-gaslight-cyan/10 via-transparent to-gaslight-magenta/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-    <div className="relative z-10">
-      <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-gaslight-cyan to-gaslight-magenta flex items-center justify-center mb-5 shadow-[0_0_20px_rgba(0,136,255,0.3)] group-hover:scale-110 transition-transform">
-        <Icon className="text-white" size={24} />
-      </div>
-      <h3 className="text-xl font-bold mb-3 text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-gaslight-cyan group-hover:to-white transition-all">{title}</h3>
-      <p className="text-slate-400 leading-relaxed text-sm group-hover:text-slate-300 transition-colors">
-        {description}
-      </p>
-    </div>
-  </motion.div>
-);
-
 const SparkleParticle = ({ delay }: { delay: number }) => {
   const [position] = useState({
     x: Math.random() * 100,
@@ -46,7 +27,7 @@ const SparkleParticle = ({ delay }: { delay: number }) => {
   });
 
   return (
-    <motion.div
+    <motion.div 
       initial={{ opacity: 0, scale: 0, x: `${position.x}vw`, y: `${position.y}vh` }}
       animate={{
         opacity: [0, 0.6, 0],
@@ -66,7 +47,7 @@ const SparkleParticle = ({ delay }: { delay: number }) => {
         backgroundColor: position.color,
         boxShadow: `0 0 ${position.size * 2}px ${position.color}`,
         willChange: 'transform, opacity' // Performance optimization
-      }}
+       }}
     />
   );
 };
@@ -74,8 +55,10 @@ const SparkleParticle = ({ delay }: { delay: number }) => {
 const AnimatedSwitcherDemo = () => {
   return (
     <div className="relative rounded-[2rem] overflow-hidden border border-white/20 shadow-[0_20px_100px_rgba(0,136,255,0.25)] bg-[#0A0A0F] aspect-video flex items-center justify-center group hover:shadow-[0_20px_80px_rgba(0,136,255,0.3)] transition-shadow duration-500">
+       {/* Fake Desktop Background */}
        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop')] bg-cover bg-center opacity-30 mix-blend-luminosity" />
        
+       {/* Switcher overlay */}
        <motion.div 
          initial={{ opacity: 0, scale: 0.9 }}
          animate={{ opacity: 1, scale: 1 }}
@@ -83,6 +66,7 @@ const AnimatedSwitcherDemo = () => {
          className="relative z-10 p-3 rounded-[2rem] border border-white/20 bg-black/40 backdrop-blur-2xl shadow-2xl"
        >
           <div className="grid grid-cols-2 gap-4 p-4">
+             {/* Preview 1 */}
              <div className="w-56 h-40 rounded-2xl bg-gradient-to-br from-[#101015] to-[#1A1A24] border border-white/10 p-3 flex flex-col shadow-inner">
                  <div className="flex-1 rounded-xl bg-white/5 border border-white/5 mb-3 flex items-center justify-center overflow-hidden relative">
                      <div className="absolute inset-0 bg-blue-500/20 blur-xl" />
@@ -90,6 +74,7 @@ const AnimatedSwitcherDemo = () => {
                  </div>
                  <div className="text-sm text-center font-semibold text-slate-200 truncate">Terminal</div>
              </div>
+             {/* Preview 2 */}
              <motion.div 
                animate={{ borderColor: ["rgba(255,255,255,0.1)", "rgba(0,136,255,0.8)", "rgba(255,255,255,0.1)"] }}
                transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 1 }}
@@ -109,13 +94,14 @@ const AnimatedSwitcherDemo = () => {
           </div>
        </motion.div>
        
+       {/* Instruction popup */}
        <motion.div 
          initial={{ y: 20, opacity: 0 }}
          animate={{ y: 0, opacity: 1 }}
          transition={{ delay: 0.5 }}
          className="absolute bottom-8 px-6 py-3 rounded-full bg-black/60 border border-gaslight-cyan/40 backdrop-blur-md shadow-[0_0_20px_rgba(0,136,255,0.3)]"
        >
-         <span className="text-gaslight-cyan font-bold text-sm tracking-wider uppercase">Hold [Alt] to reveal hidden windows</span>
+          <span className="text-gaslight-cyan font-bold text-sm tracking-wider uppercase">Hold [Alt] to reveal hidden windows</span>
        </motion.div>
     </div>
   );
@@ -132,13 +118,13 @@ const AppReplica = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-transparent via-gaslight-cyan/5 to-gaslight-magenta/5 pointer-events-none" />
             
             {/* TitleBar */}
-            <div className="h-14 flex items-center px-6 gap-4 bg-transparent relative z-10 border-b border-white/5">
+             <div className="h-14 flex items-center px-6 gap-4 bg-transparent relative z-10 border-b border-white/5">
                 <img src="/logo.png" className="w-6 h-6 drop-shadow-md" alt="Gaslight Logo" />
                 <span className="font-bold text-base text-white/90">Gaslight</span>
             </div>
             
             {/* Nav Bar (Top) - INTERACTABLE */}
-            <div className="flex px-5 py-3 gap-3 bg-transparent relative z-10">
+            <div className="flex px-5 py-3 gap-3 bg-transparent relative z-10"> 
                 <button onClick={() => setActiveTab('settings')} className={`flex items-center gap-3 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all ${activeTab==='settings'?'bg-white/10 text-white shadow-md':'hover:bg-white/5 text-slate-400'}`}>
                     <Settings size={18} className="text-[#0088FF]" /> Settings
                 </button>
@@ -150,7 +136,7 @@ const AppReplica = () => {
                 </button>
             </div>
             
-            {/* Content Frame */}
+             {/* Content Frame */}
             <div className="p-10 bg-[#1A1A24]/60 h-[550px] overflow-y-auto rounded-tl-2xl border-t border-l border-white/5 relative z-10">
                 <AnimatePresence mode="wait">
                     {activeTab === 'settings' && (
@@ -172,12 +158,12 @@ const AppReplica = () => {
                                 <div className="flex items-center justify-between">
                                     <div>
                                         <div className="font-medium text-white text-lg">Launch on startup</div>
-                                        <div className="text-sm text-slate-400 mt-1">Automatically start Gaslight in the system tray when you log in.</div>
+                                         <div className="text-sm text-slate-400 mt-1">Automatically start Gaslight in the system tray when you log in.</div>
                                     </div>
                                     <div className="w-14 h-7 rounded-full flex items-center p-1 bg-gaslight-cyan justify-end cursor-default opacity-80">
                                         <div className="w-5 h-5 bg-white rounded-full shadow-md" />
                                     </div>
-                                </div>
+                                 </div>
                                 <div className="h-px bg-white/5" />
                                 <div className="flex items-center justify-between">
                                     <div>
@@ -204,7 +190,7 @@ const AppReplica = () => {
                                     <div className="flex-1 bg-black/40 border border-white/10 rounded-xl px-5 py-3 flex items-center justify-between text-base text-slate-400 cursor-default">
                                         Select recently hidden app...
                                         <ChevronDown size={18} />
-                                    </div>
+                                    </div> 
                                     <button className="px-8 py-3 bg-white/5 border border-white/10 rounded-xl text-base font-semibold text-slate-500 cursor-default">
                                         Whitelist App
                                     </button>
@@ -237,7 +223,7 @@ const AppReplica = () => {
                             <div>
                                 <h2 className="text-3xl font-bold text-white mb-2 tracking-tight">Personalization</h2>
                                 <p className="text-slate-400 text-base">Make Gaslight match your system aesthetic.</p>
-                            </div>
+                            </div> 
                             <div className="bg-[#2A2A35]/40 border border-white/10 rounded-2xl p-8 space-y-8 shadow-lg">
                                 <h3 className="text-[#FF0088] font-semibold tracking-wide text-lg">Application Theme</h3>
                                 <div className="space-y-5">
@@ -267,12 +253,12 @@ const AppReplica = () => {
                                 <p className="text-slate-400 text-base">Master the stealth workspace with these global hotkeys.</p>
                             </div>
                             <div className="bg-[#2A2A35]/40 border border-white/10 rounded-2xl p-8 space-y-8 shadow-lg">
-                                <h3 className="text-[#00FF88] font-semibold tracking-wide mb-6 text-lg">Keyboard Shortcuts</h3>
+                                 <h3 className="text-[#00FF88] font-semibold tracking-wide mb-6 text-lg">Keyboard Shortcuts</h3>
                                 <div className="space-y-8">
                                     <div className="flex gap-8 items-start">
                                         <div className="bg-white/10 border border-white/10 rounded-xl px-4 py-2.5 min-w-[140px] text-center">
                                             <span className="text-[#00FF88] font-bold text-base">Alt + H</span>
-                                        </div>
+                                         </div>
                                         <div className="pt-2">
                                             <div className="text-slate-200 font-medium text-lg">Vanish the currently active window instantly.</div>
                                         </div>
@@ -280,7 +266,16 @@ const AppReplica = () => {
                                     <div className="h-px bg-white/5" />
                                     <div className="flex gap-8 items-start">
                                         <div className="bg-white/10 border border-white/10 rounded-xl px-4 py-2.5 min-w-[140px] text-center">
-                                            <span className="text-[#00FF88] font-bold text-base">Alt + X</span>
+                                             <span className="text-[#00FF88] font-bold text-base">Alt + G</span>
+                                        </div>
+                                        <div className="pt-2">
+                                            <div className="text-slate-200 font-medium text-lg">Toggle Ghost Mode to make a window semi-transparent.</div>
+                                        </div>
+                                    </div>
+                                    <div className="h-px bg-white/5" />
+                                    <div className="flex gap-8 items-start">
+                                        <div className="bg-white/10 border border-white/10 rounded-xl px-4 py-2.5 min-w-[140px] text-center">
+                                             <span className="text-[#00FF88] font-bold text-base">Alt + X</span>
                                         </div>
                                         <div className="pt-2">
                                             <div className="text-slate-200 font-medium text-lg">Restore the last window you hid.</div>
@@ -301,7 +296,7 @@ const AppReplica = () => {
                                             <span className="text-[#00FF88] font-bold text-base">Hold Alt</span>
                                         </div>
                                         <div className="pt-2">
-                                            <div className="text-slate-200 font-medium text-lg leading-relaxed">Summon the Smart Switcher overlay to view live thumbnails of all hidden windows. Click any thumbnail to effortlessly restore it.</div>
+                                            <div className="text-slate-200 font-medium text-lg leading-relaxed">Summon the Smart Switcher overlay to view live thumbnails of all hidden windows.</div>
                                         </div>
                                     </div>
                                 </div>
@@ -314,44 +309,167 @@ const AppReplica = () => {
     );
 };
 
+const VanishAnimation = () => (
+  <div className="relative w-full h-full flex items-center justify-center bg-[#0A0A0F]/80">
+     <motion.div 
+       animate={{ scale: [1, 1, 0, 0, 1], opacity: [1, 1, 0, 0, 1] }}
+       transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+       className="w-64 h-40 bg-[#1A1A24] rounded-xl border border-white/10 shadow-xl flex flex-col overflow-hidden"
+     >
+       <div className="h-8 bg-black/40 border-b border-white/5 flex items-center px-3 gap-2">
+         <div className="w-3 h-3 rounded-full bg-[#FF5F56]"/>
+         <div className="w-3 h-3 rounded-full bg-[#FFBD2E]"/>
+         <div className="w-3 h-3 rounded-full bg-[#27C93F]"/>
+       </div>
+       <div className="flex-1 p-4 flex flex-col gap-3">
+         <div className="h-4 bg-white/10 rounded w-3/4" />
+         <div className="h-4 bg-white/10 rounded w-1/2" />
+         <div className="h-4 bg-white/10 rounded w-full" />
+       </div>
+     </motion.div>
+  </div>
+);
+
+const GhostAnimation = () => (
+  <div className="relative w-full h-full flex items-center justify-center bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop')] bg-cover bg-center">
+     <div className="absolute inset-0 bg-black/60" />
+     <motion.div 
+       animate={{ opacity: [1, 1, 0.3, 0.3, 1] }}
+       transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+       className="w-64 h-40 bg-[#1A1A24] rounded-xl border border-white/10 shadow-2xl flex flex-col overflow-hidden z-10 backdrop-blur-md"
+     >
+       <div className="h-8 bg-black/40 border-b border-white/5 flex items-center px-3 gap-2">
+         <div className="w-3 h-3 rounded-full bg-white/20"/>
+         <div className="w-3 h-3 rounded-full bg-white/20"/>
+         <div className="w-3 h-3 rounded-full bg-white/20"/>
+       </div>
+       <div className="flex-1 p-4 flex flex-col gap-3">
+         <div className="h-4 bg-gaslight-cyan/50 rounded w-3/4" />
+         <div className="h-4 bg-gaslight-magenta/50 rounded w-1/2" />
+       </div>
+     </motion.div>
+  </div>
+);
+
+const PanicAnimation = () => (
+  <div className="relative w-full h-full flex items-center justify-center bg-[#0A0A0F]/80 overflow-hidden">
+     {/* Distracting windows */}
+     <motion.div 
+       animate={{ y: [0, 0, 200, 200, 0], opacity: [1, 1, 0, 0, 1] }}
+       transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+       className="absolute w-48 h-32 bg-red-900/30 border border-red-500/20 rounded-xl -ml-20 -mt-10"
+     />
+     <motion.div 
+       animate={{ y: [0, 0, 200, 200, 0], opacity: [1, 1, 0, 0, 1] }}
+       transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+       className="absolute w-56 h-40 bg-purple-900/30 border border-purple-500/20 rounded-xl ml-20 mt-10"
+     />
+     
+     {/* Decoy Window */}
+     <motion.div 
+       initial={{ scale: 0, opacity: 0 }}
+       animate={{ scale: [0, 0, 1, 1, 0], opacity: [0, 0, 1, 1, 0] }}
+       transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+       className="absolute w-72 h-48 bg-slate-100 rounded-xl border border-slate-300 shadow-2xl flex flex-col overflow-hidden"
+     >
+       <div className="h-8 bg-green-700 flex items-center px-3">
+         <span className="text-white text-xs font-bold">Excel - Q3_Financials_Decoy.xlsx</span>
+       </div>
+       <div className="flex-1 p-2 grid grid-cols-4 gap-1 bg-white">
+         {Array.from({length: 16}).map((_, i) => (
+           <div key={i} className="bg-slate-200 border border-slate-300 rounded-sm" />
+         ))}
+       </div>
+     </motion.div>
+  </div>
+);
+
+const ThumbnailAnimation = () => (
+  <div className="relative w-full h-full flex items-center justify-center bg-[#0A0A0F]/80">
+     <motion.div 
+       animate={{ scale: [1, 0.45], x: [0, -80], y: [0, 50], borderRadius: ["12px", "16px"] }}
+       transition={{ duration: 3, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+       className="w-80 h-56 bg-[#1A1A24] border border-white/10 shadow-xl overflow-hidden flex flex-col"
+     >
+       <div className="h-8 bg-black/40 px-3 flex items-center">
+         <span className="text-white/80 text-xs font-semibold">Active Application</span>
+       </div>
+       <div className="flex-1 p-4 bg-gradient-to-br from-blue-900/40 to-indigo-900/40 flex items-center justify-center">
+         <div className="w-16 h-16 rounded-full border-4 border-white/10 border-t-gaslight-cyan animate-spin" />
+       </div>
+     </motion.div>
+     
+     {/* Ghost overlay frame to represent the switcher */}
+     <motion.div 
+       animate={{ opacity: [0, 1] }}
+       transition={{ duration: 3, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+       className="absolute inset-0 border-[3px] border-gaslight-cyan/40 rounded-[2rem] pointer-events-none"
+     />
+  </div>
+);
+
+const FeatureRow = ({ title, description, icon: Icon, children, reversed }: any) => (
+  <motion.div 
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-100px" }}
+    transition={{ duration: 0.8 }}
+    className={`flex flex-col ${reversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-12 lg:gap-20 py-24 border-b border-white/5 last:border-0`}
+  >
+    <div className="flex-1 space-y-6">
+      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-gaslight-cyan/20 to-gaslight-magenta/20 flex items-center justify-center border border-white/10 shadow-[0_0_30px_rgba(0,136,255,0.2)]">
+        <Icon className="text-white" size={32} />
+      </div>
+      <h3 className="text-3xl md:text-5xl font-black text-white tracking-tight leading-tight">{title}</h3>
+      <p className="text-xl text-slate-400 leading-relaxed font-light">{description}</p>
+    </div>
+    <div className="flex-1 w-full">
+       <div className="relative rounded-[2rem] overflow-hidden border border-white/10 bg-white/[0.02] backdrop-blur-md shadow-2xl aspect-[4/3] flex items-center justify-center group hover:border-gaslight-cyan/50 hover:shadow-[0_20px_80px_rgba(0,136,255,0.2)] transition-all duration-500">
+         <div className="absolute inset-0 bg-gradient-to-br from-gaslight-cyan/5 to-gaslight-magenta/5" />
+         {children}
+       </div>
+    </div>
+  </motion.div>
+);
+
 function App() {
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 1000], [0, 200]);
   const y2 = useTransform(scrollY, [0, 1000], [0, -200]);
-  
+
   const [particles, setParticles] = useState<number[]>([]);
 
   useEffect(() => {
-    // Dramatically reduced particle count to 10 to eliminate lag
+    // Reduced particle count to 10 to eliminate lag
     setParticles(Array.from({ length: 10 }).map(() => Math.random() * 5));
   }, []);
 
   return (
     <div className="min-h-screen font-sans selection:bg-gaslight-cyan/30 relative bg-[#050508] overflow-x-hidden text-slate-200">
-      
+
       {/* Optimized Background Orbs */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay" />
-        
-        <motion.div 
+
+        <motion.div
           style={{ y: y1 }}
           animate={{ 
             scale: [1, 1.1, 1],
             opacity: [0.15, 0.25, 0.15],
           }}
           transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="absolute top-[-10%] left-[-10%] w-[70vw] h-[70vw] bg-gaslight-cyan/20 blur-[120px] rounded-full mix-blend-screen will-change-transform" 
+          className="absolute top-[-10%] left-[-10%] w-[70vw] h-[70vw] bg-gaslight-cyan/20 blur-[120px] rounded-full mix-blend-screen will-change-transform"
         />
-        <motion.div 
+        <motion.div
           style={{ y: y2 }}
-          animate={{ 
+          animate={{
             scale: [1, 1.2, 1],
             opacity: [0.1, 0.2, 0.1],
           }}
           transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-[-10%] right-[-10%] w-[80vw] h-[80vw] bg-gaslight-magenta/15 blur-[150px] rounded-full mix-blend-screen will-change-transform" 
+          className="absolute bottom-[-10%] right-[-10%] w-[80vw] h-[80vw] bg-gaslight-magenta/15 blur-[150px] rounded-full mix-blend-screen will-change-transform"
         />
-        
+
         {particles.map((delay, i) => (
           <SparkleParticle key={i} delay={delay} />
         ))}
@@ -360,7 +478,7 @@ function App() {
       {/* Navbar */}
       <nav className="fixed w-full top-0 z-50 bg-[#050508]/60 backdrop-blur-2xl border-b border-white/5 transition-all">
         <div className="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
-          <motion.div 
+          <motion.div
             whileHover={{ scale: 1.05 }}
             className="flex items-center gap-3 cursor-pointer group"
           >
@@ -373,15 +491,15 @@ function App() {
             </span>
           </motion.div>
           <div className="flex items-center gap-6">
-            <a 
-              href="#support" 
+            <a
+              href="#support"
               className="hidden sm:flex items-center gap-2 text-slate-400 hover:text-white transition-colors text-sm font-semibold tracking-wide uppercase"
             >
               <Coffee size={18} />
               Support
             </a>
-            <a 
-              href="/Gaslight_Setup.exe"
+            <a
+              href="Gaslight_Setup.exe"
               download
               className="relative px-8 py-3 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-gaslight-cyan/50 transition-all text-white text-sm font-bold tracking-wide uppercase overflow-hidden group"
             >
@@ -395,21 +513,21 @@ function App() {
       {/* Hero Section */}
       <section className="pt-48 pb-20 px-6 relative z-10 flex flex-col items-center justify-center min-h-[80vh]">
         <div className="max-w-6xl mx-auto text-center">
-          <motion.div 
+          <motion.div
             initial="hidden"
             animate="visible"
             variants={staggerContainer}
             className="flex flex-col items-center"
           >
-            <motion.div 
-              variants={fadeIn} 
+            <motion.div
+              variants={fadeIn}
               whileHover={{ scale: 1.05 }}
               className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-gaslight-cyan/10 border border-gaslight-cyan/30 mb-10 backdrop-blur-md shadow-[0_0_30px_rgba(0,136,255,0.2)] cursor-pointer"
             >
               <Sparkles size={16} className="text-gaslight-cyan animate-pulse" />
               <span className="text-sm font-bold text-gaslight-cyan uppercase tracking-wider">v1.0.2 is Live</span>
             </motion.div>
-            
+
             <motion.h1 variants={fadeIn} className="text-6xl md:text-8xl font-black tracking-tighter mb-8 text-white leading-[1.1]">
               The Ultimate <br />
               <span className="relative inline-block mt-2">
@@ -419,21 +537,21 @@ function App() {
                 </span>
               </span>
             </motion.h1>
-            
+
             <motion.p variants={fadeIn} className="text-xl md:text-2xl text-slate-400 max-w-3xl mb-14 leading-relaxed font-light">
               Instantly vanish and manage your active applications with global hotkeys and a magical native Windows overlay.
             </motion.p>
-            
+
             <motion.div variants={fadeIn} className="flex items-center gap-6">
-              <a 
-                href="/Gaslight_Setup.exe" 
+              <a
+                href="Gaslight_Setup.exe"
                 download
                 className="relative px-8 py-3 rounded-full bg-gaslight-cyan border border-gaslight-cyan hover:bg-white/10 hover:border-gaslight-cyan/50 transition-all text-white text-sm font-bold tracking-wide uppercase overflow-hidden group"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-gaslight-magenta/20 to-gaslight-cyan/20 opacity-0 group-hover:opacity-100 transition-opacity" />
                 <span className="relative z-10">Get Started</span>
               </a>
-              <a 
+              <a
                 href="#use-cases"
                 className="relative px-8 py-3 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-gaslight-cyan/50 transition-all text-white text-sm font-bold tracking-wide uppercase overflow-hidden group"
               >
@@ -493,10 +611,10 @@ function App() {
         </div>
       </section>
 
-      {/* Features Grid & Descriptions */}
+      {/* Extensive Features Section */}
       <section id="features" className="py-32 px-6 relative z-10 border-t border-white/5 bg-gradient-to-b from-[#050508] to-[#0A0A0F]">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-24">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-32">
             <motion.div 
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -511,7 +629,7 @@ function App() {
               viewport={{ once: true }}
               className="text-4xl md:text-6xl font-black mb-8 text-white tracking-tighter"
             >
-              Feature Breakdown.
+              Every Feature, Visualized.
             </motion.h2>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -520,48 +638,45 @@ function App() {
               transition={{ delay: 0.1 }}
               className="text-slate-400 max-w-3xl mx-auto text-xl font-light"
             >
-              Everything you need to stay stealthy and focused, built natively for Windows.
+              Explore the core mechanics that make Gaslight the ultimate stealth workspace tool.
             </motion.p>
           </div>
           
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            <FeatureCard 
-              icon={EyeOff}
+          <div className="flex flex-col gap-32">
+            <FeatureRow 
               title="Instant Vanish"
-              description="Hide active windows from your screen and taskbar with a single keypress, keeping your work entirely discreet."
-            />
-            <FeatureCard 
-              icon={Command}
-              title="Smart Switcher"
-              description="Summon a live-preview frosted glass overlay to effortlessly manage, view, and click to restore your hidden windows."
-            />
-            <FeatureCard 
-              icon={Layers}
-              title="Intelligent Whitelist"
-              description="Add specific applications to an exclusion list. Gaslight will ensure they never disappear, and will even restore them instantly if they were already hidden when you hit the panic button."
-            />
-            <FeatureCard 
+              description="With a single press of Alt+H, your active window completely vanishes from the screen and taskbar. It’s stored safely in Gaslight's memory, completely invisible to the OS."
+              icon={EyeOff}
+            >
+              <VanishAnimation />
+            </FeatureRow>
+            
+            <FeatureRow 
+              title="Ghost Mode"
+              description="Press Alt+G to make any window semi-transparent. Perfect for keeping an eye on a video or chat in the background while working. Turn on 'Click-Through' to make it completely intangible!"
+              icon={Ghost}
+              reversed
+            >
+              <GhostAnimation />
+            </FeatureRow>
+            
+            <FeatureRow 
+              title="Decoys & Panic Button"
+              description="When someone approaches, hit Ctrl+Alt+C. All your visible windows will vanish, and Gaslight will instantly launch your pre-configured decoy files (like Excel or a text document) to fill the screen."
               icon={ShieldAlert}
-              title="Panic Button"
-              description="Rapidly conceal all active, visible windows on your desktop simultaneously for immediate privacy."
-            />
-            <FeatureCard 
-              icon={Download}
-              title="Seamless Setup"
-              description="A lightweight, standalone installer drops Gaslight right into your system tray without bloated dependencies."
-            />
-            <FeatureCard 
-              icon={CheckCircle2}
-              title="Always Ready"
-              description="Enable 'Launch on Startup' to ensure Gaslight's global hooks are always guarding your back from the moment you boot up."
-            />
-          </motion.div>
+            >
+              <PanicAnimation />
+            </FeatureRow>
+            
+            <FeatureRow 
+              title="Live Snapshot Thumbnails"
+              description="Gaslight doesn't just hide your apps—it takes a native Windows high-fidelity snapshot right before they vanish, so you always know exactly what state you left them in when you open the Switcher."
+              icon={MonitorPlay}
+              reversed
+            >
+              <ThumbnailAnimation />
+            </FeatureRow>
+          </div>
         </div>
       </section>
 
@@ -570,8 +685,8 @@ function App() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gaslight-magenta/10 via-[#050508] to-[#050508]" />
         <div className="max-w-5xl mx-auto text-center relative z-10 p-16 rounded-[3rem] border border-white/10 bg-white/[0.02] backdrop-blur-2xl shadow-[0_0_80px_rgba(255,0,136,0.15)] overflow-hidden group">
           <div className="absolute inset-0 bg-gradient-to-r from-gaslight-cyan/10 to-gaslight-magenta/10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-          
-          <motion.div 
+
+          <motion.div
             whileHover={{ rotate: 180, scale: 1.1 }}
             transition={{ duration: 0.5 }}
             className="w-20 h-20 mx-auto rounded-3xl bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center mb-8 shadow-[0_0_40px_rgba(245,158,11,0.4)] relative z-10"
@@ -582,11 +697,11 @@ function App() {
           <p className="text-xl text-slate-300 mb-12 max-w-2xl mx-auto font-light relative z-10">
             Gaslight is built with passion and provided entirely free. If it saved your life (or just your screen space), consider leaving a tip!
           </p>
-          <motion.a 
+          <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            href="#" 
-            onClick={(e) => { e.preventDefault(); alert("Link your Ko-fi, BuyMeACoffee, or PayPal here!"); }}
+            href="#"
+            onClick={(e) => { e.preventDefault(); alert("Link your Ko-fi, BuyMeACoffee, or PayPal here!"); }}   
             className="inline-flex items-center gap-3 px-10 py-5 rounded-full bg-gradient-to-r from-yellow-500 to-orange-600 text-white font-black text-xl shadow-[0_0_40px_rgba(245,158,11,0.5)] hover:shadow-[0_0_60px_rgba(245,158,11,0.7)] transition-all relative z-10"
           >
             <Coffee size={24} />
