@@ -119,7 +119,7 @@ const AppReplica = () => {
             
             {/* TitleBar */}
              <div className="h-14 flex items-center px-6 gap-4 bg-transparent relative z-10 border-b border-white/5">
-                <img src="/logo.png" className="w-6 h-6 drop-shadow-md" alt="Gaslight Logo" />
+                <img src="logo.png" className="w-6 h-6 drop-shadow-md" alt="Gaslight Logo" />
                 <span className="font-bold text-base text-white/90">Gaslight</span>
             </div>
             
@@ -483,7 +483,7 @@ function App() {
             className="flex items-center gap-3 cursor-pointer group"
           >
             <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-gaslight-cyan to-gaslight-magenta flex items-center justify-center shadow-[0_0_20px_rgba(0,136,255,0.4)] group-hover:shadow-[0_0_30px_rgba(255,0,136,0.6)] transition-all overflow-hidden">
-              <img src="/logo.png" alt="Gaslight Logo" className="absolute inset-0 w-full h-full object-cover" />
+              <img src="logo.png" alt="Gaslight Logo" className="absolute inset-0 w-full h-full object-cover" />
               <div className="absolute inset-0 rounded-xl bg-white opacity-0 group-hover:opacity-20 transition-opacity" />
             </div>
             <span className="text-2xl font-black tracking-tighter text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-gaslight-cyan group-hover:to-gaslight-magenta transition-all">
