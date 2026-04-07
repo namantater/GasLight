@@ -54,8 +54,9 @@ If you've been searching for a "boss key", "screen hider", "privacy overlay", or
 - **Privacy:** 100% local. No telemetry, no tracking, and fully free for personal use.
 
 ## 🤝 Support the Developer
-Gaslight is provided completely free of charge. If it saved your privacy, helped you focus, or you just love the UI, consider leaving a tip!
-- [Buy me a Coffee](https://ko-fi.com/)
+Gaslight is provided completely free of charge. If it saved your privacy, helped you focus, or you just love the UI, consider supporting the project!
+- [Sponsor on GitHub](#) (Coming Soon)
+- [Support via Razorpay / Crypto](#) (Coming Soon)
 
 ---
 <div align="center">
