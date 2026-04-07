@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  body {
+    @apply bg-gaslight-dark text-slate-100 antialiased;
+  }
+}
+
+@utility gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-gaslight-cyan to-gaslight-magenta;
+}
+
+@utility gradient-bg {
+  @apply bg-gradient-to-r from-gaslight-cyan to-gaslight-magenta;
+}
