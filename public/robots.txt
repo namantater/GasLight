@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://namantater.github.io/GasLight/sitemap.xml
