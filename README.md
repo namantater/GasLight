@@ -55,7 +55,7 @@ If you've been searching for a "boss key", "screen hider", "privacy overlay", or
 
 ## 🤝 Support the Developer
 Gaslight is provided completely free of charge. If it saved your privacy, helped you focus, or you just love the UI, consider supporting the project!
-- [Sponsor on GitHub](#) (Coming Soon)
+- [Sponsor on GitHub](https://github.com/sponsors/namantater)
 - [Support via Razorpay / Crypto](#) (Coming Soon)
 
 ---

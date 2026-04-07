@@ -700,8 +700,9 @@ function App() {
           <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            href="#"
-            onClick={(e) => { e.preventDefault(); alert("Link your GitHub Sponsors, Razorpay link, or Crypto Wallet here!"); }}   
+            href="https://github.com/sponsors/namantater"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-10 py-5 rounded-full bg-gradient-to-r from-yellow-500 to-orange-600 text-white font-black text-xl shadow-[0_0_40px_rgba(245,158,11,0.5)] hover:shadow-[0_0_60px_rgba(245,158,11,0.7)] transition-all relative z-10"
           >
             <Coffee size={24} />
