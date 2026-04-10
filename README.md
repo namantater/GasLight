@@ -47,7 +47,7 @@ Gaslight operates entirely via global system hotkeys. Once the app is running in
 
 *You can customize the `Alt` long-press delay, Ghost Mode opacity, and configure your Whitelists and Decoys by Right-Clicking the Gaslight icon in your System Tray and clicking "Settings".*
 
-## 🎯 Why Gaslight? (SEO & Discoverability)
+## 🎯 Why Gaslight?
 If you've been searching for a "boss key", "screen hider", "privacy overlay", or a way to "make windows transparent" on Windows 10/11, Gaslight is the modern solution. 
 - **Performance:** Written in C# with direct P/Invoke calls to `user32.dll` for zero-latency execution.
 - **Aesthetics:** Implements Windows 11 `MicaBackdrop` and modern fluid UI concepts—it looks and feels like it belongs in the OS.
@@ -56,7 +56,6 @@ If you've been searching for a "boss key", "screen hider", "privacy overlay", or
 ## 🤝 Support the Developer
 Gaslight is provided completely free of charge. If it saved your privacy, helped you focus, or you just love the UI, consider supporting the project!
 - [Sponsor on GitHub](https://github.com/sponsors/namantater)
-- [Support via Razorpay / Crypto](#) (Coming Soon)
 
 ---
 <div align="center">
